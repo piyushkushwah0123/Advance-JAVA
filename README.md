@@ -1,6 +1,3 @@
-# Advance-JAVA
-This repository showcases Advanced Java concepts including JDBC, Servlets, JSP, MVC architecture, and Multithreading. It demonstrates CRUD operations, database connectivity with MySQL, session management, and layered project structure (Controller, Service, DAO) for real-world backend development practice.
-
 # 🚀 Advanced Java Projects
 
 This repository contains practical implementations of Advanced Java concepts focused on backend web development and real-world project structure.
