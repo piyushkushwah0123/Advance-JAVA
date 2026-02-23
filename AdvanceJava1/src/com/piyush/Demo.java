@@ -3,6 +3,7 @@ package com.piyush;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
@@ -14,6 +15,8 @@ public class Demo {
 	private static final String DBPASSWORD = "root";
 	private static final String INSERTDATA = "insert into student values(?,?,?)";
 	
+	private static final String selectData= "select * from student"; 
+	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		
 				Class.forName("com.mysql.cj.jdbc.Driver");
@@ -21,21 +24,28 @@ public class Demo {
 		        Connection con = DriverManager.getConnection(DBURL, DBUSERNAME, DBPASSWORD); 			
 				
 		        PreparedStatement pstmt = con.prepareStatement(INSERTDATA);
-		        System.out.println(" Enter the Studnet ID ");
+		      /*
+		        System.out.println(" Enter the Student ID ");
 		        Scanner sc = new Scanner(System.in);
 		                int id = sc.nextInt();      
-		        System.out.println(" Enter the Studnet Name ");        
+		        System.out.println(" Enter the Student Name ");        
 		        String name = sc.next();
-		        System.out.println(" Enter the Studnet City ");        
+		        System.out.println(" Enter the Student City ");        
 		        String city = sc.next();
 		        	        
 		        pstmt.setInt(1,id);
 		        pstmt.setString(2,name);
 		        pstmt.setString(3,city);
+		      */  
+		     //  int rowsaffected = pstmt.executeUpdate();
 		        
-		       int rowsaffected = pstmt.executeUpdate();
+		     //  System.out.println("Rows affected"+ rowsaffected );
+		        ResultSet rs = pstmt.executeQuery();
 		        
-		       System.out.println("Rows affected"+ rowsaffected );
+		        if(rs.next()) {
+		        	System.out.println(rs.getInt(1) + " " +rs.getString(2) + " "+ rs.getString(3));
+		        }
+		        
 		       con.close();
 		       
 	}
