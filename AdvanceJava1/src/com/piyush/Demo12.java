@@ -19,19 +19,19 @@ public class Demo12 {
 				Class.forName("com.mysql.cj.jdbc.Driver");	
 				
 				// 2. Get the connection :- It is an Interface in java
-				Connection con = DriverManager.getConnection(DBURL, DBUSERNAME, DBPASSWORD);
-				
+				Connection con = DriverManager.getConnection(DBURL, DBUSERNAME, DBPASSWORD);	
 				
 				// Passing value to IN parameter
 				CallableStatement cstmt = con.prepareCall("call p2(?)");
 				cstmt.setInt(1, 2);
-
 				
 				ResultSet rs = cstmt.executeQuery();
 
 				while(rs.next()) {
 				    System.out.println(rs.getInt(1) + " " + rs.getString(2) + " "  + rs.getString(3));
 				}
+				
 				con.close();
+				
 	}
 }
