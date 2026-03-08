@@ -20,22 +20,22 @@ public class Demo {
 
 		Statement stmt = con.createStatement();
 
-		stmt.addBatch("INSERT INTO books VALUES (111,'AI',2000.00)");
-		stmt.addBatch("INSERT INTO books VALUES (112,'Java Programming',850.50)");
-		stmt.addBatch("INSERT INTO books VALUES (113,'Python Basics',650.00)");
-		stmt.addBatch("INSERT INTO books VALUES (114,'Data Structures',920.75)");
-		stmt.addBatch("INSERT INTO books VALUES (115,'Machine Learning',1500.00)");
-		stmt.addBatch("INSERT INTO books VALUES (116,'Deep Learning',1750.25)");
-		stmt.addBatch("INSERT INTO books VALUES (117,'Web Development',720.00)");
-		stmt.addBatch("INSERT INTO books VALUES (118,'HTML Guide',350.00)");
-		stmt.addBatch("INSERT INTO books VALUES (119,'CSS Mastery',400.00)");
-		stmt.addBatch("INSERT INTO books VALUES (120,'JavaScript Basics',550.00)");
+		stmt.addBatch("INSERT INTO books VALUES (101,'AI',2000.00)");
+		stmt.addBatch("INSERT INTO books VALUES (102,'Java Programming',850.50)");
+		stmt.addBatch("INSERT INTO books VALUES (103,'Python Basics',650.00)");
+		stmt.addBatch("INSERT INTO books VALUES (104,'Data Structures',920.75)");
+		stmt.addBatch("INSERT INTO books VALUES (105,'Machine Learning',1500.00)");
+		stmt.addBatch("INSERT INTO books VALUES (106,'Deep Learning',1750.25)");
+		stmt.addBatch("INSERT INTO books VALUES (107,'Web Development',720.00)");
+		stmt.addBatch("INSERT INTO books VALUES (108,'HTML Guide',350.00)");
+		stmt.addBatch("INSERT INTO books VALUES (109,'CSS Mastery',400.00)");
+		stmt.addBatch("INSERT INTO books VALUES (110,'JavaScript Basics',550.00)");
 
 		int[] rows = stmt.executeBatch();
 
 		System.out.println("Total Record Inserted : " + rows.length);
 
-		ResultSet rs = stmt.executeQuery("SELECT * FROM books where price > 1500");
+		ResultSet rs = stmt.executeQuery("SELECT * FROM books GROUP BY price DESC");
 
 		System.out.println("Books Table Data:");
 
