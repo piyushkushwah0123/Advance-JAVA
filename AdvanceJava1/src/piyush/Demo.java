@@ -31,22 +31,27 @@ public class Demo {
 		stmt.addBatch("INSERT INTO books VALUES (109,'CSS Mastery',400.00)");
 		stmt.addBatch("INSERT INTO books VALUES (110,'JavaScript Basics',550.00)");
 
-		int[] rows = stmt.executeBatch();
+	//	int[] rows = stmt.executeBatch();
+	//	System.out.println("Total Record Inserted : " + rows.length);
 
-		System.out.println("Total Record Inserted : " + rows.length);
-
-		ResultSet rs = stmt.executeQuery("SELECT * FROM books GROUP BY price DESC");
+		ResultSet rs = stmt.executeQuery("SELECT book_price % 2 AS price_type, Count(book_price) as total FROM books GROUP BY book_price % 2");
 
 		System.out.println("Books Table Data:");
 
 		while (rs.next()) {
 
-			int id = rs.getInt("id");
-			String name = rs.getString("name");
-			double price = rs.getDouble("price");
+//			int id = rs.getInt("id");
+//			String name = rs.getString("name");
+//			double price = rs.getDouble("price");
+			
+//			System.out.println(id + "  " + name + "  " + price);
+			
+			int type = rs.getInt("price_type");
+			int count = rs.getInt("total");
 
-			System.out.println(id + "  " + name + "  " + price);
+			System.out.println(type + " " + count);
 		}
+		
 		con.close();
 	}
 }
